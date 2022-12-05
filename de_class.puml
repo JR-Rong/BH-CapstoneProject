@@ -1,0 +1,73 @@
+@startuml de_class
+class differential_evolution
+class constrain
+class double_constrain
+class population
+class individual
+class termination_strategy
+class selection_strategy
+class mutation_strategy
+
+
+constrain : double m_max
+constrain : double m_min
+
+constrain : virtual double get_rand_value() = 0
+constrain : virtual double get_rand_value(double value, double origin) = 0
+constrain : virtual double get_middle_point() = 0
+constrain : virtual double get_min() = 0
+constrain : virtual double get_max() = 0
+
+
+double_constrain : virtual double get_rand_value()
+double_constrain : virtual double get_rand_value(double value, double origin)
+double_constrain : virtual double get_min()
+double_constrain : virtual double get_max()
+double_constrain : virtual double get_middle_point()
+
+
+population : size_t m_popsize
+
+population : void init()
+population : std::shared_ptr<individual> best(bool minimize)
+population : std::ostream& operator<<(std::ostream& cout, population &pop)
+
+
+mutation_strategy : double m_weight 
+mutation_strategy : double m_crossover
+mutation_strategy : double m_dither
+
+mutation_strategy : double get_weight()
+mutation_strategy : double get_crossover()
+mutation_strategy : double get_dither()
+
+
+individual : std::vector<double> m_vars
+individual : double m_cost
+
+individual : void init()
+individual : void get_vars()
+individual : void get_cost()
+individual : double operator[](size_t index)
+individual : std::ostream& operator<<(std::ostream& cout, individual &ind)
+
+
+termination_strategy : size_t m_maxgen
+
+termination_strategy : bool operator()(size_t genCount)
+
+
+selection_strategy : void operator()(population& pop_ori, population& pop_new)
+
+
+constrain <|-- double_constrain
+
+population o-- individual
+
+differential_evolution o-- double_constrain
+differential_evolution o-- population
+differential_evolution o-- termination_strategy
+differential_evolution o-- selection_strategy
+differential_evolution o-- mutation_strategy
+
+@enduml
