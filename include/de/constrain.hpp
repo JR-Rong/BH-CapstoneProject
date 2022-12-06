@@ -2,9 +2,12 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-05 17:29:41
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2022-12-05 21:22:49
+ * @LastEditTime: 2022-12-06 22:50:38
  * @Description: file content
  */
+#ifndef CONSTRAIN_HPP_
+#define CONSTRAIN_HPP_
+
 #include <random>
 
 namespace de {
@@ -39,3 +42,5 @@ public :
 };
 
 } // namespace de
+
+#endif // CONSTRAIN_HPP_
