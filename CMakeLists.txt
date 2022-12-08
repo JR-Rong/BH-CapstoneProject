@@ -8,6 +8,8 @@ elseif(CMAKE_HOST_WIN32)
     set(CMAKE_CXX_FLAGS)    
 endif()
 
+set(CMAKE_CXX_STANDARD 17)
+
 file(
     GLOB_RECURSE SOURCE_CPP 
     ${PROJECT_SOURCE_DIR}/src/*.cpp
