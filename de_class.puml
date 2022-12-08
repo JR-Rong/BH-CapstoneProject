@@ -28,9 +28,12 @@ double_constrain : virtual double get_middle_point()
 
 population : size_t m_popsize
 
-population : void init()
-population : std::shared_ptr<individual> best(bool minimize)
-population : std::ostream& operator<<(std::ostream& cout, population &pop)
+population : population(size_t popSize, size_t varCount)
+population : population(size_t popSize, size_t varCount, double_constrain cons)
+
+population : void init(size_t popSize, size_t varCount)
+population : std::shared_ptr<individual> best()
+population : friend std::ostream& operator<<(std::ostream& cout, population &pop)
 
 
 mutation_strategy : double m_weight 
@@ -45,11 +48,19 @@ mutation_strategy : double get_dither()
 individual : std::vector<double> m_vars
 individual : double m_cost
 
-individual : void init()
-individual : void get_vars()
-individual : void get_cost()
-individual : double operator[](size_t index)
-individual : std::ostream& operator<<(std::ostream& cout, individual &ind)
+individual : individual();
+individual : individual(size_t varSize);
+individual : individual(std::vector<double>& vars);
+individual : individual(const individual& ind);
+individual : individual(individual&& ind);
+individual : void init(double_constrain cons);
+individual : std::vector<double>& get_vars();
+individual : double get_cost();
+individual : void set_cout(double cost);
+individual : double operator[](size_t index);
+individual : bool operator<=(const individual& ind);
+individual : bool operator<(const individual& ind);
+individual : friend std::ostream& operator<<(std::ostream& cout, individual& ind);
 
 
 termination_strategy : size_t m_maxgen
