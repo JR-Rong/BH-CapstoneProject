@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-08 10:28:40
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2022-12-08 11:36:00
+ * @LastEditTime: 2022-12-09 12:06:05
  * @Description: file content
  */
 
@@ -15,7 +15,7 @@
 
 namespace de{
 
-class population : std::vector<std::shared_ptr<individual>> {
+class population : public std::vector<std::shared_ptr<individual>> {
 
 private:
     size_t m_popsize;
