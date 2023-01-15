@@ -2,19 +2,19 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-07 09:53:30
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2022-12-08 10:22:14
+ * @LastEditTime: 2023-01-15 13:22:42
  * @Description: file content
  */
 #include "de/individual.hpp"
-
+#include "de/constrain.hpp"
 namespace de {
 individual::individual():
     m_vars(100)
-{}
+{set_cost(100000);}
 
 individual::individual(size_t varSize) : 
     m_vars(varSize)
-{}
+{set_cost(100000);}
 
 individual::individual(std::vector<double>& vars) : 
     m_vars(vars)
@@ -42,7 +42,7 @@ double individual::get_cost(){
     return m_cost;
 }
 
-void individual::set_cout(double cost){
+void individual::set_cost(double cost){
     m_cost = cost;
 }
 

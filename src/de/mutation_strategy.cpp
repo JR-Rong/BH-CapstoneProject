@@ -1,3 +1,10 @@
+/*
+ * @Author: jianrui-rong rongjianrui@gmail.com
+ * @Date: 2022-12-09 11:38:17
+ * @LastEditors: jianrui-rong
+ * @LastEditTime: 2023-01-15 13:25:36
+ * @Description: file content
+ */
 
 #include "de/mutation_strategy.hpp"
 
@@ -8,7 +15,9 @@ mutation_strategy::mutation_strategy(double weight, double crossover, size_t var
     , m_crossover(crossover)
     , m_dither(weight + genrand() * (1.0 - weight))
     , m_varCount(varCount)
-    {}
+    {
+        m_enum = mutation_strategy_enum::STRA_1;
+    }
 
 double mutation_strategy::get_weight() {
     return m_weight;
@@ -23,11 +32,15 @@ size_t mutation_strategy::get_varCount() {
     return m_varCount;
 }
 
+void mutation_strategy::set_strategy(mutation_strategy_enum strategy_enum){
+    m_enum = strategy_enum;
+}
+
+
 std::pair<std::shared_ptr<individual>, std::vector<double>> mutation_strategy::operator()(
     const population& pop,
     std::shared_ptr<individual> bestIt,
-    size_t i,
-    mutation_strategy_enum strategy) {
+    size_t i) {
 
     std::shared_ptr<individual> tmpInd(std::make_shared<individual>(pop[i]->get_vars()));
     const Urn urn(pop.size(), i);
@@ -36,9 +49,10 @@ std::pair<std::shared_ptr<individual>, std::vector<double>> mutation_strategy::o
     size_t j = genintrand(0, get_varCount(), true);
     size_t k = 0;
     double jitter = (0.0001 * genrand() + get_weight());
+    double val = 0;
     
     do {
-        switch (strategy)
+        switch (m_enum)
         {
         case STRA_1:
             tmpInd->get_vars().at(j) = pop[urn[0]]->get_vars().at(j) + get_weight() * (pop[urn[1]]->get_vars().at(j) - pop[urn[2]]->get_vars().at(j));

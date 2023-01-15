@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-08 11:04:42
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2022-12-09 10:12:02
+ * @LastEditTime: 2023-01-15 12:59:29
  * @Description: file content
  */
 
@@ -17,13 +17,13 @@ population::population(size_t popSize, size_t varCount)
     init(popSize, varCount);
 }
 
-population::population(size_t popSize, size_t varCount, double_constrain cons)
+population::population(size_t popSize, size_t varCount, constrains<double_constrain> cons)
     : m_popsize(popSize)
     , std::vector<std::shared_ptr<individual>>(popSize)
 {
     init(popSize, varCount);
     for (size_t i = 0; i < size(); ++i) {
-        at(i)->init(cons);
+        at(i)->init(cons[i]);
     }
 }
 
@@ -44,7 +44,11 @@ std::shared_ptr<individual> population::best(){
 
 
 std::ostream& operator<<(std::ostream& cout, population &pop){
-    cout << "best ind : " << *(pop.best()); 
+    int i=0;
+    for(auto ind : pop){
+        cout << "ind " << i <<"\t: " << *(pop.at(i++)) << std::endl; 
+    }
+    cout << "best ind : " << *(pop.best()) << std::endl; 
     return cout;
 }
 

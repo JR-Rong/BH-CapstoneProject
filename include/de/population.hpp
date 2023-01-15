@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-08 10:28:40
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2022-12-09 12:06:05
+ * @LastEditTime: 2023-01-15 13:06:32
  * @Description: file content
  */
 
@@ -12,6 +12,7 @@
 #include <memory>
 
 #include "de/individual.hpp"
+#include "de/constrain.hpp"
 
 namespace de{
 
@@ -22,7 +23,7 @@ private:
 
 public: 
     population(size_t popSize, size_t varCount);
-    population(size_t popSize, size_t varCount, double_constrain cons);
+    population(size_t popSize, size_t varCount, constrains<double_constrain> cons);
 
     void init(size_t popSize, size_t varCount);
     std::shared_ptr<individual> best();

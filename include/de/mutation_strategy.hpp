@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-09 10:15:35
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2022-12-09 12:06:44
+ * @LastEditTime: 2022-12-20 16:59:03
  * @Description: file content
  */
 #ifndef MUTATION_STRATEGY_HPP_
@@ -78,6 +78,7 @@ private:
     double m_crossover;
     double m_dither;
     size_t m_varCount;
+    mutation_strategy_enum m_enum;
 
 public:
     mutation_strategy(double weight, double crossover, size_t varCount);
@@ -86,12 +87,12 @@ public:
     double get_crossover();
     double get_dither();
     size_t get_varCount();
+    void set_strategy(mutation_strategy_enum strategy_enum);
 
     std::pair<std::shared_ptr<individual>, std::vector<double>> operator()(
         const population& pop,
         std::shared_ptr<individual> bestIt,
-        size_t i,
-        mutation_strategy_enum strategy);
+        size_t i);
 };
 
 } // namespace de 

@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-06 22:47:52
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2022-12-08 10:21:49
+ * @LastEditTime: 2023-01-15 13:23:36
  * @Description: file content
  */
 #ifndef INDIVIDUAL_HPP_
@@ -10,10 +10,9 @@
 
 #include <vector>
 #include <iostream>
-#include "de/constrain.hpp"
 
 namespace de {
-
+class double_constrain;
 class individual{
 public:
     individual();
@@ -25,7 +24,7 @@ public:
     void init(double_constrain cons);
     std::vector<double>& get_vars();
     double get_cost();
-    void set_cout(double cost);
+    void set_cost(double cost);
     double operator[](size_t index);
     bool operator<=(const individual& ind);
     bool operator<(const individual& ind);
