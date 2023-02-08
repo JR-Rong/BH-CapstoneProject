@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-05 17:29:41
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-01-15 13:27:24
+ * @LastEditTime: 2023-02-05 22:15:58
  * @Description: file content
  */
 #ifndef CONSTRAIN_HPP_
@@ -57,7 +57,7 @@ public:
 
     void ensure_constrains(population& pop){
         for(int i=0; i<pop.size(); i++){
-        auto ind = *(pop[i]);
+        auto ind = *(pop.at(i));
         constrain con = at(i);
         con.ensure_constrain(ind);
         }

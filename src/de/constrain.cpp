@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-05 17:35:09
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-01-15 13:36:07
+ * @LastEditTime: 2023-01-15 13:37:54
  * @Description: file content
  */
 
@@ -58,9 +58,7 @@ void de::double_constrain::ensure_constrain(de::individual& ind){
     std::vector<double>& vars = ind.get_vars();
     for(int i = 0; i < vars.size(); i++){
         if(vars[i] > this -> get_max() || vars[i] < this -> get_min()){
-            std::cout << "var is " << vars[i] ;
             vars[i] = this -> get_rand_value();
-            std::cout << " new var is " << vars[i] <<std::endl;
         }
     }
 }

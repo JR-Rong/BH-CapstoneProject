@@ -2,12 +2,13 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-05 17:34:57
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-01-15 12:58:14
+ * @LastEditTime: 2023-02-06 12:24:40
  * @Description: file content
  */
 #include <iostream>
 
 #include "de/differential_evolution.hpp"
+#include "mapping/mapping.hpp"
 
 #define DE_VAR_COUNT 8
 #define DE_POP_SIZE 15
@@ -22,6 +23,10 @@ double cost_fun(std::shared_ptr<de::individual>& ind_ptr){
 }
 
 int main(){
+
+    mapping::display_map map;
+    map.init();
+
     de::constrains<de::double_constrain> cons(100, 1, (unsigned)time( NULL ), DE_POP_SIZE);
     de::population pop1(DE_POP_SIZE, DE_VAR_COUNT, cons);
     de::population pop2(DE_POP_SIZE, DE_VAR_COUNT, cons);
