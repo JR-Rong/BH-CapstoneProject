@@ -16,6 +16,7 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
+add_definitions(-DPROJECT_CURRENT_DIR="${PROJECT_SOURCE_DIR}/")
 
 file(
     GLOB_RECURSE SOURCE_CPP 
@@ -25,6 +26,7 @@ file(
 set(
     THIRD_PARTY_CPP 
     ${PROJECT_SOURCE_DIR}/third_party/glad/glad.c
+    ${PROJECT_SOURCE_DIR}/third_party/json/jsoncpp.cpp
 )
 
 message("Find Source File: ${SOURCE_CPP}")

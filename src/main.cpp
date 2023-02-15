@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-05 17:34:57
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-02-06 12:24:40
+ * @LastEditTime: 2023-02-14 19:55:08
  * @Description: file content
  */
 #include <iostream>
@@ -25,8 +25,22 @@ double cost_fun(std::shared_ptr<de::individual>& ind_ptr){
 int main(){
 
     mapping::display_map map;
-    map.init();
-
+    
+    if(mapping::choose_build_map_way()){
+        map.input_size();
+        map.init();
+        map.gen_map();
+        map.display();
+        mapping::store_map(map);
+    } else {
+        #ifdef PROJECT_CURRENT_DIR
+            std::string map_file = std::string(PROJECT_CURRENT_DIR) + "map_build\\map_default.json";
+            mapping::read_map(map_file, map);
+        #endif
+        map.init();
+        map.display();
+    }
+    
     de::constrains<de::double_constrain> cons(100, 1, (unsigned)time( NULL ), DE_POP_SIZE);
     de::population pop1(DE_POP_SIZE, DE_VAR_COUNT, cons);
     de::population pop2(DE_POP_SIZE, DE_VAR_COUNT, cons);
@@ -49,7 +63,7 @@ int main(){
                                 mutationStrategy,
                                 cost_func);
 
-    de_program.run();
+    // de_program.run();
 
     return 0;
 }

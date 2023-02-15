@@ -2,9 +2,13 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-20 10:21:52
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2022-12-20 15:16:52
+ * @LastEditTime: 2023-02-14 10:10:07
  * @Description: file content
  */
+
+#ifndef SELECTION_STRATEGY_HPP_
+#define SELECTION_STRATEGY_HPP_
+
 #include "de/population.hpp"
 #include <functional>
 
@@ -43,3 +47,5 @@ public:
 };
 
 } //namespace de 
+
+#endif // SELECTION_STRATEGY_HPP_

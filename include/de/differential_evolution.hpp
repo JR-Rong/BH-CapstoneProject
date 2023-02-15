@@ -2,9 +2,12 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-11-29 19:56:25
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-01-15 12:58:19
+ * @LastEditTime: 2023-02-14 10:09:27
  * @Description: 
  */
+
+#ifndef DIFFERENTIAL_EVOLUTION_HPP_
+#define DIFFERENTIAL_EVOLUTION_HPP_
 
 #include <memory>
 #include <vector>
@@ -55,3 +58,5 @@ public:
 };
 
 } //namespace de
+
+#endif // DIFFERENTIAL_EVOLUTION_HPP_
