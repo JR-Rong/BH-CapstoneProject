@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-07 09:53:30
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-01-15 13:22:42
+ * @LastEditTime: 2023-03-10 10:15:55
  * @Description: file content
  */
 #include "de/individual.hpp"
@@ -10,11 +10,12 @@
 namespace de {
 individual::individual():
     m_vars(100)
-{set_cost(100000);}
+{
+    set_cost(DBL_MAX);}
 
 individual::individual(size_t varSize) : 
     m_vars(varSize)
-{set_cost(100000);}
+{set_cost(DBL_MAX);}    
 
 individual::individual(std::vector<double>& vars) : 
     m_vars(vars)
@@ -36,6 +37,10 @@ void individual::init(double_constrain cons) {
 
 std::vector<double>& individual::get_vars(){
     return m_vars;
+}
+
+std::vector<int>& individual::get_taboo(){
+    return m_taboo;
 }
 
 double individual::get_cost(){

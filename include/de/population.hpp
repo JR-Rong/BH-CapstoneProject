@@ -26,6 +26,7 @@ public:
     population(size_t popSize, size_t varCount, constrains<double_constrain> cons);
 
     void init(size_t popSize, size_t varCount);
+    void set_best(std::shared_ptr<individual> best);
     std::shared_ptr<individual> best();
     friend std::ostream& operator<<(std::ostream& cout, population &pop);
 };

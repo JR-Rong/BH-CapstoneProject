@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-20 10:21:52
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-02-14 10:10:07
+ * @LastEditTime: 2023-03-09 17:05:55
  * @Description: file content
  */
 
@@ -22,7 +22,6 @@ public:
                     std::shared_ptr<individual>& bestInd) {
 
     sort_across(pop1, pop2);
-
     bestInd = pop1[0];
     }
 

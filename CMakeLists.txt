@@ -2,13 +2,12 @@ cmake_minimum_required(VERSION 3.2)
 
 project(CapStoneProject VERSION 1.0 HOMEPAGE_URL "https://github.com/JR-Rong/BH-CapstoneProject")
 
-set(CMAKE_MAKE_PROGRAM "MinGW Makefiles")
-
 if(CMAKE_HOST_UNIX)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -g -fpermissive -ldl")
     link_directories("${PROJECT_SOURCE_DIR}/lib/lunux")
-    set(OPENGL_LIB "glfw3.so")
+    set(OPENGL_LIB "glfw3")
 elseif(CMAKE_HOST_WIN32)
+    set(CMAKE_MAKE_PROGRAM "MinGW Makefiles")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -fpermissive")   
     link_directories("${PROJECT_SOURCE_DIR}/lib/win-vs2022")
     set(OPENGL_LIB "glfw3.lib")
@@ -39,4 +38,9 @@ add_executable(
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/third_party)
 
-target_link_libraries(app opengl32.lib ${OPENGL_LIB})
+
+if(CMAKE_HOST_UNIX)
+    target_link_libraries(app glfw3 GL m Xrandr Xi X11 Xxf86vm pthread dl Xinerama Xcursor)
+elseif(CMAKE_HOST_WIN32)
+    target_link_libraries(app opengl32.lib ${OPENGL_LIB})
+endif()

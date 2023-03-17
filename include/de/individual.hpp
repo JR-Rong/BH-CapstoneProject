@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-06 22:47:52
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-01-15 13:23:36
+ * @LastEditTime: 2023-03-08 13:40:57
  * @Description: file content
  */
 #ifndef INDIVIDUAL_HPP_
@@ -23,6 +23,7 @@ public:
 
     void init(double_constrain cons);
     std::vector<double>& get_vars();
+    std::vector<int>& get_taboo();
     double get_cost();
     void set_cost(double cost);
     double operator[](size_t index);
@@ -33,6 +34,7 @@ public:
 private:
     std::vector<double> m_vars;
     double m_cost;
+    std::vector<int> m_taboo;
 };
 
 } //namespace de

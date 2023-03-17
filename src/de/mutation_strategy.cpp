@@ -2,7 +2,7 @@
  * @Author: jianrui-rong rongjianrui@gmail.com
  * @Date: 2022-12-09 11:38:17
  * @LastEditors: jianrui-rong
- * @LastEditTime: 2023-01-15 13:25:36
+ * @LastEditTime: 2023-03-08 13:52:15
  * @Description: file content
  */
 
@@ -78,7 +78,11 @@ std::pair<std::shared_ptr<individual>, std::vector<double>> mutation_strategy::o
             tmpInd->get_vars().at(j) = pop[urn[0]]->get_vars().at(j) + get_weight() * (pop[urn[1]]->get_vars().at(j) - pop[urn[2]]->get_vars().at(j));
             break;
         }
-
+        // if(find(tmpInd -> get_taboo().begin(), tmpInd -> get_taboo().end(), static_cast<int>(tmpInd->get_vars().at(j))) == tmpInd -> get_taboo().end()) {
+        //     j = ++j % get_varCount();
+        //     ++k;
+        //     tmpInd -> get_taboo().push_back(static_cast<int>(tmpInd->get_vars().at(j)));
+        // }
         j = ++j % get_varCount();
         ++k;
     } while (genrand() < get_crossover() && k < get_varCount());
