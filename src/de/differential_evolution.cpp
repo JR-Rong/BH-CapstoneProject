@@ -36,10 +36,16 @@ namespace de {
     }
 
     void differential_evolution::run(){
+        
+        utils::Logger logger;
         std::shared_ptr<individual> bestInd(m_bestInd);
         for(size_t gen=0; std::invoke(m_terminationStrategy, gen); gen++){
+            // std::cout << "--------- New Gen Start, Gen count:" << gen << " ----------" << std::endl;
+            // logger << "--------- New Gen Start, Gen count:" << gen << " ----------";
+            // logger << "+++++++++ Start mutation ++++++++++";
+            // logger << "ind|";
             std::cout << "--------- New Gen Start, Gen count:" << gen << " ----------" << std::endl;
-            std::cout << "+++++++++ Start mutation ++++++++++" << std::endl;
+            std::cout << "+++++++++ Start mutation ++++++++++"<< std::endl;
             std::cout << "ind|";
             int last_val = 0;
             for(size_t indcount=0; indcount < m_popSize; indcount++){
@@ -47,17 +53,17 @@ namespace de {
                 std::pair<std::shared_ptr<individual>, std::vector<double>> mutation_info((*m_mutationStrategy)(m_pop1, bestInd, indcount));
                 m_constraints.ensure_constrains(*(mutation_info.first), indcount);
                 mutation_info.first -> set_cost(m_costFunc(mutation_info.first));
-                std::cout <<  *mutation_info.first <<std::endl;
+                logger <<  *mutation_info.first;
                 m_pop2.at(indcount) = mutation_info.first;
             }
             std::cout << std::endl;
-            std::cout << "+++++++++ end mutation ++++++++++" << std::endl;
-            std::cout << "+++++++++ start selection ++++++++++" << std::endl;
+            std::cout  << "+++++++++ end mutation ++++++++++"<< std::endl;
+            std::cout  << "+++++++++ start selection ++++++++++"<< std::endl;
             std::invoke(m_selectionStrategy, m_pop1, m_pop2, m_bestInd);
-            std::cout << "+++++++++ end selection ++++++++++" << std::endl;
-            std::cout << "bestInd :" << m_pop1 <<std::endl;
+            std::cout  << "+++++++++ end selection ++++++++++"<< std::endl;
+            std::cout  << "bestInd :" << m_pop1<< std::endl;
         }
-
+        logger.stroe_log();
     }
 
 } //namespace de

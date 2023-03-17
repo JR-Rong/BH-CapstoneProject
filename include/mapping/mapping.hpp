@@ -10,16 +10,16 @@
 #define MAPPING_HPP_
 
 #include <vector>
-#include <glad\glad.h>
-#include <glfw\glfw3.h>
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 #include <iostream>
 
-#include <glm\glm\glm.hpp>
-#include <glm\glm\gtc\matrix_transform.hpp>
-#include <glm\glm\gtc\type_ptr.hpp>
+#include "glm/glm/glm.hpp"
+#include "glm/glm/gtc/matrix_transform.hpp"
+#include "glm/glm/gtc/type_ptr.hpp"
 
-#include "mapping\store_map.hpp"
+#include "mapping/store_map.hpp"
 
 namespace mapping{
 

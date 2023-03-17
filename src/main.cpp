@@ -17,7 +17,7 @@
 
 #define DE_VAR_COUNT 48
 #define DE_IND_MAX  5
-#define DE_POP_SIZE 40
+#define DE_POP_SIZE 20
 #define DE_GEN_SIZE 50
 
 std::vector<std::vector<double>> city_map = {

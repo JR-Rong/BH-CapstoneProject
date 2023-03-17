@@ -6,6 +6,7 @@
  * @Description: file content
  */
 #include "utils/utils.hpp"
+#include <cmath>
 
 namespace utils {
 
@@ -34,4 +35,26 @@ void print_map(std::vector<std::vector<double>> map_) {
     }
 }
 
+Logger::Logger(){
+    std::string cur_path = "";
+    #ifdef PROJECT_CURRENT_DIR
+    cur_path = PROJECT_CURRENT_DIR;
+    #endif
+    std::time_t now = std::time(nullptr);
+    std::tm* local_time = std::localtime(&now);
+
+    // 格式化当前时间为字符串，作为文件名
+    std::ostringstream filename_stream;
+    filename_stream << cur_path << "log/log_" << std::put_time(local_time, "%Y-%m-%d_%H-%M-%S") << ".log";
+    std::string filename = filename_stream.str();
+
+    // 创建并写入文件
+    m_log = std::ofstream(filename);
+}
+
+
+
+void Logger::stroe_log() {
+    this -> m_log.close();
+}
 } // namespace utils

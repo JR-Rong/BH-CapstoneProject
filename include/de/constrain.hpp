@@ -10,6 +10,7 @@
 
 #include <random>
 #include <time.h> 
+#include <vector>
 
 namespace de {
 class individual;
@@ -58,13 +59,13 @@ public:
     void ensure_constrains(population& pop){
         for(int i=0; i<pop.size(); i++){
         auto ind = *(pop.at(i));
-        constrain con = at(i);
+        constrain con = this -> at(i);
         con.ensure_constrain(ind);
         }
     }
 
     void ensure_constrains(individual& ind, size_t idx){
-        constrain con = at(idx);
+        constrain con = this -> at(idx);
         con.ensure_constrain(ind);
     }
 };

@@ -21,6 +21,8 @@
 #include "de/termination_strategy.hpp"
 #include "de/selection_strategy.hpp"
 
+#include "utils/utils.hpp"
+
 namespace de {
 
 class differential_evolution{

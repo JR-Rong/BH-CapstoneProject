@@ -7,6 +7,7 @@
  */
 #include "de/individual.hpp"
 #include "de/constrain.hpp"
+#include <cfloat>
 namespace de {
 individual::individual():
     m_vars(100)

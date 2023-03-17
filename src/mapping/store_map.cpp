@@ -5,7 +5,9 @@
  * @LastEditTime: 2023-02-14 20:18:21
  * @Description: file content
  */
-#include "mapping\store_map.hpp"
+#include "mapping/store_map.hpp"
+#include <iterator>
+#include <algorithm>
 
 namespace mapping {
 

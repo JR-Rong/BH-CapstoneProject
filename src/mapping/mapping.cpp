@@ -5,8 +5,8 @@
  * @LastEditTime: 2023-02-14 20:32:28
  * @Description: file content
  */
-#include "mapping\shader.hpp"
-#include "mapping\mapping.hpp"
+#include "mapping/shader.hpp"
+#include "mapping/mapping.hpp"
 
 namespace mapping {
 

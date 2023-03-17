@@ -18,9 +18,9 @@
 #include <sstream>
 #include <filesystem>
 
-#include "json\json.h"
+#include "json/json.h"
 
-#include "mapping\mapping.hpp"
+#include "mapping/mapping.hpp"
 
 namespace mapping {
 
